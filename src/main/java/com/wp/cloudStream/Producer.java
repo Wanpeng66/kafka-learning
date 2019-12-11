@@ -22,6 +22,6 @@ public class Producer {
     private Output output;
 
     public void send() {
-        output.second().send( MessageBuilder.withPayload( "springcloud..." ).build() );
+        output.output().send( MessageBuilder.withPayload( "cccccccccccc..." ).build() );
     }
 }

@@ -30,6 +30,8 @@ spring:
               kafka:
                 client-id: ${spring.application.name}
                 bootstrap-servers: 182.61.105.104:9092
+                #consumer:
+                  #enable-auto-commit: false 也不生效
       bindings:
         out:
           destination: second
@@ -45,7 +47,7 @@ spring:
           group: springcloud_stream_kafka_consumer
           consumer:
             concurrency: 1
-            autoCommitOffset: false
+            #autoCommitOffset: false   不生效
 
       #kafka:
         #binder:

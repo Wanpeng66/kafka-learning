@@ -28,7 +28,7 @@ public class Consumer {
         LOG.info( "recieve data: "+data+"......................" );
         Acknowledgment acknowledgment = data.getHeaders().get( KafkaHeaders.ACKNOWLEDGMENT, Acknowledgment.class);
         if (acknowledgment != null) {
-            System.out.println("Acknowledgment provided");
+            LOG.info("Acknowledgment provided...............");
             acknowledgment.acknowledge();
         }
         //return "send to......";

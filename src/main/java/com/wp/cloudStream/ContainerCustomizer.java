@@ -18,9 +18,7 @@ public class ContainerCustomizer implements ListenerContainerCustomizer<Abstract
     @Override
     public void configure( AbstractMessageListenerContainer container, String destinationName, String group ) {
         log.info( "........................destinationName:"+destinationName+",group:"+group );
-        ContainerProperties containerProperties = container.getContainerProperties();
-        containerProperties.setAckMode( ContainerProperties.AckMode.MANUAL_IMMEDIATE );
-        log.info( "................."+containerProperties.getClientId()+"........................" );
-        containerProperties.setClientId( "clientId" );
+        container.getContainerProperties().setAckMode( ContainerProperties.AckMode.MANUAL_IMMEDIATE);
+        container.getContainerProperties().setClientId("so57970152");
     }
 }
