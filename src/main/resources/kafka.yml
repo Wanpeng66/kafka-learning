@@ -1,0 +1,24 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: springcloud-stream-kafka
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 182.61.105.104:9092
+        bindings:
+          second:
+            consumer:
+              autoCommitOffset: false
+              configuration:
+                groupId: test-test-consumer
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+server:
+  port: 10000
+  servlet:
+    context-path: /kafka
+spring:
+  application:
+    name: springcloud-stream-kafka
+  #kafka:
+    #client-id: ${spring.application.name}
+    #bootstrap-servers: 182.61.105.104:9092
+    #producer:
+      #value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #transaction-id-prefix: kafka-learning-tx-
+      #retries: 2
+    #consumer:
+      #group-id: ${spring.application.name}-consumer
+      #value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #max-poll-records: 5
+      #enable-auto-commit: false
+
+  cloud:
+    stream:
+      binders:
+        kafka:
+          type: kafka
+          environment:
+            spring:
+              kafka:
+                client-id: ${spring.application.name}
+                bootstrap-servers: 182.61.105.104:9092
+      bindings:
+        out:
+          destination: second
+          binder: kafka
+          content-type: text/plain
+        sendto:
+          destination: in
+          binder: kafka
+          content-type: text/plain
+        in:
+          destination: second
+          binder: kafka
+          group: springcloud_stream_kafka_consumer
+          consumer:
+            concurrency: 1
+            autoCommitOffset: false
+
+      #kafka:
+        #binder:
+          #brokers: 182.61.105.104:9092
+        #bindings:
+          #input:
+            #destination: second
+            #binder: kafka
+            #content-type: text/plain
+          #output:
+            #destination: second
+            #binder: kafka
+            #group: springcloud_stream_kafka_consumer
+            #consumer:
+              #concurrency: 2
+
+
+
+
+
+
+
+
