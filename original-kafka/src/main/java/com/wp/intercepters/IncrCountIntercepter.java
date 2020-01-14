@@ -25,7 +25,7 @@ public class IncrCountIntercepter implements ProducerInterceptor {
     @Override
     public ProducerRecord onSend( ProducerRecord record ) {
         log.info( record.toString()+"开始发送..." );
-        return null;
+        return record;
     }
 
     /**
@@ -38,7 +38,7 @@ public class IncrCountIntercepter implements ProducerInterceptor {
     */
     @Override
     public void onAcknowledgement( RecordMetadata metadata, Exception exception ) {
-        log.info( metadata.toString() );
+        log.info( "发送消息后得到回执:"+metadata.toString() );
     }
 
     @Override
